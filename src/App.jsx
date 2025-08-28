@@ -203,41 +203,44 @@ export default function Page() {
   };
 
   // —— GALERÍA & CANCIÓN para la sorpresa final ——
-  const openGallery = () => {
-    const imgH = isMobile ? 140 : 180; // más compacto en móvil
-    const imgsHtml = galleryImages.length
-      ? galleryImages
-          .map(
-            (u) => `
-              <img src="${u}" loading="lazy"
-                   style="height:${imgH}px;border-radius:14px;
-                          box-shadow:0 8px 24px rgba(0,0,0,.25);
-                          object-fit:cover"/>
-            `
-          )
-          .join("")
-      : `
-        <div style="opacity:.85">No encontré fotos en <code>src/assets/galeria</code> con el patrón <b>foto (n).ext</b>.</div>
-      `;
+const openGallery = () => {
+  const imgsHtml = galleryImages.length
+    ? galleryImages
+        .map(
+          (u) => `
+            <img src="${u}" loading="lazy"
+                 style="height:180px;border-radius:14px;
+                        box-shadow:0 8px 24px rgba(0,0,0,.25);
+                        object-fit:cover;display:inline-block;margin-right:10px"/>
+          `
+        )
+        .join("")
+    : `<div style="opacity:.85">No encontré fotos en la carpeta de galería.</div>`;
 
-    Swal.fire({
-      title: "Nuestros momentos 📷",
-      html: `
-        <div style="max-width:92vw;margin:0 auto;text-align:center">
-          <div style="display:flex;gap:12px;overflow:auto;padding:8px 4px">
-            ${imgsHtml}
-          </div>
-          <div style="font-size:12px;opacity:.75;margin-top:6px">
-            Desliza lateralmente para ver más
-          </div>
+  Swal.fire({
+    title: "Nuestros momentos 📷",
+    html: `
+      <div style="max-width:920px;margin:0 auto;text-align:center">
+        <div style="
+          overflow-x:auto;
+          overflow-y:hidden;
+          white-space:nowrap;
+          padding:8px 4px;
+          scrollbar-width: thin;
+        ">
+          ${imgsHtml}
         </div>
-      `,
-      width: isMobile ? Math.min(420, window.innerWidth) : 960,
-      background: `#fff url(${swalbg})`,
-      confirmButtonText: "Aww 💕",
-      backdrop: `rgba(0,0,0,0.45)`,
-    });
-  };
+        <div style="font-size:12px;opacity:.75;margin-top:6px">
+          Desliza hacia la izquierda/derecha para ver más →
+        </div>
+      </div>
+    `,
+    width: 960,
+    background: `#fff url(${swalbg})`,
+    confirmButtonText: "Aww 💕",
+    backdrop: `rgba(0,0,0,0.45)`,
+  });
+};
 
   const playOurSong = () => {
     // Arranca con tu tercera canción (home.mp3)
