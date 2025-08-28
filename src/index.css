@@ -1,0 +1,122 @@
+/* ===== Tipografías decorativas que ya tenías ===== */
+@import url("https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Charm:wght@400;700&family=Elsie:wght@400;900&family=Great+Vibes&family=MonteCarlo&family=Parisienne&family=Prata&family=Quintessential&family=Square+Peg&display=swap');
+
+/* ===== Nuevas tipografías modernas para base aesthetic ===== */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-deco: 'Protest Riot', cursive;
+
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* ===== Animaciones que ya tenías ===== */
+.animate-bounce {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ======== AESTHETIC EXTRAS ======== */
+
+/* Fondo gradiente animado */
+@keyframes gradientShift {
+  0% { background-position: 0% 40%; }
+  50% { background-position: 100% 60%; }
+  100% { background-position: 0% 40%; }
+}
+.bg-aurora {
+  background: linear-gradient(135deg,
+    #0f1020 0%,
+    #1a0b2e 35%,
+    #2d0f42 60%,
+    #3b0f47 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 18s ease-in-out infinite;
+}
+
+/* Card estilo glass */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35),
+    inset 0 1px 1px rgba(255,255,255,0.15);
+  border-radius: 1.5rem;
+}
+
+/* Botones con glow */
+.btn-glow {
+  box-shadow:
+    0 8px 22px rgba(255, 64, 129, 0.25),
+    0 2px 8px rgba(255, 64, 129, 0.25);
+  transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.btn-glow:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 26px rgba(255, 64, 129, 0.36),
+    0 4px 12px rgba(255, 64, 129, 0.25);
+}
+.btn-glow-secondary {
+  box-shadow:
+    0 8px 22px rgba(99, 102, 241, 0.25),
+    0 2px 8px rgba(99, 102, 241, 0.25);
+}
+.btn-glow-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 26px rgba(99, 102, 241, 0.36),
+    0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+/* Headings elegantes */
+.h-hero {
+  font-family: var(--font-serif);
+  letter-spacing: .3px;
+}
+.subtle {
+  opacity: .85;
+}
